@@ -1,0 +1,136 @@
+<html>
+<head>
+  <title>FusionHub</title>
+  <link rel="icon" href="TechProjLogoFinal.png" type="image/x-icon">
+  <style>
+   
+    body, html {
+      height: 100%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    .bg-image {
+     
+      background-image: url('foodim.jpg');
+
+     
+      filter: blur(4px);
+      -webkit-filter: blur(4px);
+
+      
+      height: 100%;
+
+
+      background-position: center;
+      background-repeat: no-repeat;
+      background-size: cover;
+      position: absolute;
+      width: 100%;
+      z-index: -1;
+    }
+
+    .login-container {
+      width: 300px;
+      padding: 40px;
+      background-color: rgba(255, 255, 255, 0.8);
+      border-radius: 10px;
+    }
+
+    .login-container h1 {
+      text-align: center;
+      color: hsl(193, 55%, 47%);
+    }
+
+    .form-group {
+      margin-bottom: 20px;
+    }
+
+    .form-group label {
+      display: block;
+      margin-bottom: 5px;
+      color: hsl(193, 55%, 47%);
+      font-style: oblique;
+    }
+
+    .form-group input {
+      width: 100%;
+      padding: 8px;
+      border: 1px solid #ddd;
+      border-radius: 10px;
+    }
+
+    .form-group button {
+      width: 100%;
+      padding: 10px;
+      background-color:hsl(193, 55%, 47%);
+      color: #ffffff;
+      border: none;
+      border-radius: 10px;
+      cursor: pointer;
+    }
+
+    .form-group button:hover {
+      background-color: hsl(193, 55%, 47%);
+    }
+  </style>
+</head>
+<body>
+    <div class="bg-image"></div>
+    <div class="login-container">
+        <h1>Fusion Hub</h1>
+        <form id="paymentForm">
+            <div class="form-group">
+                <label for="username">Email:</label>
+                <input type="text" id="username" name="username" placeholder="Enter your email" required>
+            </div>
+            <div class="form-group">
+                <label for="password">Password:</label>
+                <input type="password" id="password" name="password" placeholder="Enter your password" required>
+            </div>
+            <div class="form-group">
+                <button type="button" onclick="payNow()">PAY NOW</button>
+            </div>
+        </form>
+    </div>
+
+    <script>
+        function validate() {
+            var username = document.getElementById("username").value;
+            if (!isValidEmail(username)) {
+                alert("Invalid email address");
+                return false;
+            }
+
+            var password = document.getElementById("password").value;
+            if (password.length < 8 || !containsAlphanumeric(password)) {
+                alert("Password must be at least 8 characters and contain both letters and numbers");
+                return false;
+            }
+            
+            return true;
+        }
+
+        function isValidEmail(email) {
+            var emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            return emailRegex.test(email);
+        }
+
+        function containsAlphanumeric(text) {
+            return /[a-zA-Z]/.test(text) && /[0-9]/.test(text);
+        }
+
+        function payNow() {
+            if (validate()) {
+                document.getElementById("paymentForm").action = "https://rzp.io/l/l8hPLbL";
+                document.getElementById("paymentForm").submit();
+            }
+        }
+    </script>
+</body>
+</html>
